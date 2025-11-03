@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ori - Gesellschaft für besondere Forschung">
+    <title>Ori :: Willkommen</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <!-- Windows 2000 Style Title Bar -->
+    <div class="titlebar">
+        <div class="titlebar-left">
+            <span class="window-icon">◈</span>
+            <span class="window-title">Ori Zentrale :: Das größte Geheimnis</span>
+        </div>
+        <div class="titlebar-right">
+            <button class="titlebar-btn" id="minimize">_</button>
+            <button class="titlebar-btn" id="maximize">□</button>
+            <button class="titlebar-btn close-btn" id="close">×</button>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo">
+                        <div class="symbol">◈</div>
+                        <span class="ori-text">ORI</span>
+                    </div>
+                    <div class="tagline">Das größte Geheimnis</div>
+                </div>
+                <div class="header-info">
+                    <div class="date-time" id="datetime"></div>
+                    <div class="member-count">Bewacht seit: <span class="encrypted">██.20██</span></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <a href="#" class="nav-btn active">
+                <span class="nav-icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <a href="#about" class="nav-btn">
+                <span class="nav-icon">📜</span>
+                <span>Das Projekt</span>
+            </a>
+            <a href="#members" class="nav-btn">
+                <span class="nav-icon">�️</span>
+                <span>Die 5 Hüter</span>
+            </a>
+            <a href="#archive" class="nav-btn">
+                <span class="nav-icon">📁</span>
+                <span>Ereignisse</span>
+            </a>
+            <a href="#research" class="nav-btn">
+                <span class="nav-icon">�</span>
+                <span>Sicherheit</span>
+            </a>
+            <a href="#contact" class="nav-btn">
+                <span class="nav-icon">⚠</span>
+                <span>Team Omega</span>
+            </a>
+        </nav>
+
+        <!-- Marquee Announcement -->
+        <div class="marquee-container">
+            <marquee behavior="scroll" direction="left" scrollamount="3">
+                ⚠ WICHTIG :: Projekt Ori Status: AKTIV seit Oktober 20██ :: 
+                Der Koffer bleibt versiegelt - Drei Fragezeichen. Ein Koffergeheim :: 
+                Die 5 Hüter bewachen mit ihrem Leben :: Team Omega: EINDRINGVERSUCHE ERKANNT :: 
+                Basis-Sicherheit: STUFE MAXIMUM :: BastiGHG: "Eine sehr, sehr große Sache" :: 
+                ◈ Macht durch Geheimnis ◈ ::
+            </marquee>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Left Sidebar -->
+            <aside class="sidebar">
+                <div class="widget">
+                    <div class="widget-title">⚡ Aktuelles</div>
+                    <div class="widget-content">
+                        <ul class="news-list">
+                            <li><span class="date">[03.11.██]</span> Wächter-Rotation erfolgreich</li>
+                            <li><span class="date">[01.11.██]</span> Team Omega Aktivität erhöht</li>
+                            <li><span class="date">[25.10.██]</span> Redstone-System Update v2.3</li>
+                            <li><span class="date">[15.10.██]</span> Basis-Erweiterung abgeschlossen</li>
+                            <li><span class="date">[05.10.██]</span> Ori-Projekt gestartet 🎯</li>
+                            <li class="encrypted-item"><span class="date">[██.██.██]</span> <span class="encrypted">KOFFER_ÖFFNUNG</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="widget omega-warning">
+                    <div class="widget-title">⚠ TEAM OMEGA</div>
+                    <div class="widget-content">
+                        <div style="background: #2C2C2C; color: #FF4500; padding: 12px; border-radius: 3px; border: 2px solid #FF4500; margin-bottom: 10px;">
+                            <strong style="display: block; margin-bottom: 8px;">🚨 SICHERHEITSALARM</strong>
+                            <p style="font-size: 10px; line-height: 1.5; margin: 0;">
+                                Der Widerstand versucht aktiv, das Geheimnis zu lüften. 
+                                Mehrere Eindringversuche wurden protokolliert.
+                            </p>
+                        </div>
+                        <div style="font-size: 10px; color: #666;">
+                            <p><strong>Status:</strong> <span style="color: #FF4500;">BEDROHUNG AKTIV</span></p>
+                            <p><strong>Letzte Aktivität:</strong> Vor 2 Stunden</p>
+                            <p><strong>Sicherheitsstufe:</strong> ERHÖHT</p>
+                        </div>
+                        <div style="margin-top: 10px; font-size: 9px; font-style: italic; color: #999;">
+                            "Dreiste Männer wollen ihn stehlen über Nacht..."
+                        </div>
+                    </div>
+                </div>
+
+                <div class="widget login-widget-glitch">
+                    <div class="widget-title">🔐 Zugang</div>
+                    <div class="widget-content">
+                        <form class="login-form" id="loginForm">
+                            <input type="text" placeholder="Benutzer-ID" class="input-field">
+                            <input type="password" placeholder="Zugangscode" class="input-field">
+                            <button type="submit" class="btn-submit">Anmelden</button>
+                        </form>
+                        <div class="hint-text">Nur für autorisierte Mitglieder</div>
+                    </div>
+                </div>
+
+                <div class="widget mystery">
+                    <div class="widget-title">⟁ ???</div>
+                    <div class="widget-content">
+                        <div class="mystery-box" id="mysteryBox">
+                            <p class="glitch-text">01001111010100100100100100101101010010110100001101000001001100010011001100101101010000100100000101010011010101000100100101000111010010000100011101000111</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Center Content -->
+            <main class="content">
+                <!-- Welcome Panel -->
+                <section class="panel welcome-panel">
+                    <div class="panel-header">
+                        <h1>◈ Willkommen im Ori-Projekt ◈</h1>
+                    </div>
+                    <div class="panel-content">
+                        <p class="lead-text">
+                            <em>"Ori ist eine große Sache, eine sehr, sehr große Sache."</em> - BastiGHG
+                        </p>
+                        <p>
+                            Seit <strong>Oktober 20<span class="redacted">██</span></strong> ist <strong>Ori</strong> das zentrale Rätselelement und größte Geheimnis 
+                            des Servers. Ein mysteriöser Koffer – ein aus Holz gefertigtes Item, 
+                            dargestellt als verzaubertes Totem – wird von BastiGHG unter größtem Geheimhaltungsaufwand bewacht.
+                        </p>
+                        <p>
+                            <strong>Drei Fragezeichen. Ein Koffergeheim ist das größte Geheimnis.</strong> 
+                            Niemand schaut in ihn rein. Die primäre Emotion, die Ori ausstrahlen soll, ist <span style="color: #FFD700; font-weight: bold;">MACHT</span>.
+                        </p>
+                        <blockquote style="background: #F0F0F0; border-left: 4px solid #FFD700; padding: 15px; margin: 20px 0; font-style: italic;">
+                            "Eine Macht unbegreiflich. Aus Holz gemacht, und wenn jemand das Geheimnis preisgibt, 
+                            macht er das, der Kopf rollt." - Aus dem Ori-Song
+                        </blockquote>
+                        <div class="info-boxes">
+                            <div class="info-box">
+                                <div class="info-icon">�️</div>
+                                <h3>Die 5 Hüter</h3>
+                                <p>Fünf Wächter beschützen ihn mit ihrem Leben</p>
+                            </div>
+                            <div class="info-box">
+                                <div class="info-icon">�</div>
+                                <h3>Der Koffer</h3>
+                                <p>Versiegelt und bewacht - Das größte Geheimnis</p>
+                            </div>
+                            <div class="info-box">
+                                <div class="info-icon">⚔️</div>
+                                <h3>Team Omega</h3>
+                                <p>Der Widerstand versucht das Geheimnis zu lüften</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Die 5 Hüter Section -->
+                <section class="panel">
+                    <div class="panel-header">
+                        <h2>🛡️ Die 5 Hüter von Ori</h2>
+                    </div>
+                    <div class="panel-content">
+                        <p style="margin-bottom: 20px; font-style: italic;">
+                            "Fünf Hüter im beschützen ihn mit ihrem Leben und haben ganz heimlich ihn dem Auserwählten gegeben."
+                        </p>
+                        <div class="guardians-grid">
+                            <div class="guardian-card">
+                                <div class="guardian-icon">🛡️</div>
+                                <h3 class="guardian-name">nooreax</h3>
+                                <p class="guardian-status">STATUS: <span class="status-ok">AKTIV</span></p>
+                                <p class="guardian-desc">Wächter des ersten Siegels</p>
+                            </div>
+                            <div class="guardian-card">
+                                <div class="guardian-icon">⚔️</div>
+                                <h3 class="guardian-name">Faister</h3>
+                                <p class="guardian-status">STATUS: <span class="status-ok">AKTIV</span></p>
+                                <p class="guardian-desc">Wächter des zweiten Siegels</p>
+                            </div>
+                            <div class="guardian-card">
+                                <div class="guardian-icon">🗡️</div>
+                                <h3 class="guardian-name">NQRMAN</h3>
+                                <p class="guardian-status">STATUS: <span class="status-ok">AKTIV</span></p>
+                                <p class="guardian-desc">Wächter des dritten Siegels</p>
+                            </div>
+                            <div class="guardian-card">
+                                <div class="guardian-icon">🏹</div>
+                                <h3 class="guardian-name">byStegi</h3>
+                                <p class="guardian-status">STATUS: <span class="status-ok">AKTIV</span></p>
+                                <p class="guardian-desc">Wächter des vierten Siegels</p>
+                            </div>
+                            <div class="guardian-card">
+                                <div class="guardian-icon">🔱</div>
+                                <h3 class="guardian-name">CastCrafter</h3>
+                                <p class="guardian-status">STATUS: <span class="status-ok">AKTIV</span></p>
+                                <p class="guardian-desc">Wächter des fünften Siegels</p>
+                            </div>
+                        </div>
+                        <div style="margin-top: 20px; padding: 15px; background: #FFFFCC; border: 2px solid #FFD700; border-radius: 4px; text-align: center;">
+                            <strong>⚠ HINWEIS:</strong> Die Hüter sind nicht nur Schutzmechanismen – sie sind aktive Akteure, 
+                            die den Koffer mit ihrem Leben bewachen und BastiGHG unterstützen.
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Project Overview -->
+                <section class="panel">
+                    <div class="panel-header">
+                        <h2>📂 Aktuelle Operationen</h2>
+                    </div>
+                    <div class="panel-content">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Projekt</th>
+                                    <th>Status</th>
+                                    <th>Priorität</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Koffer-Sicherung ALPHA</td>
+                                    <td><span class="status-badge active">AKTIV</span></td>
+                                    <td><span class="priority critical">KRITISCH</span></td>
+                                    <td><a href="#" class="link">Mehr Info</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Basis-Ausbau (Redstone)</td>
+                                    <td><span class="status-badge progress">LÄUFT</span></td>
+                                    <td><span class="priority high">HOCH</span></td>
+                                    <td><a href="#" class="link">Mehr Info</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Wächter-Protokoll v2.0</td>
+                                    <td><span class="status-badge active">AKTIV</span></td>
+                                    <td><span class="priority high">HOCH</span></td>
+                                    <td><a href="#" class="link">Mehr Info</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Team Omega Abwehr</td>
+                                    <td><span class="status-badge progress">LÄUFT</span></td>
+                                    <td><span class="priority critical">KRITISCH</span></td>
+                                    <td><a href="#" class="link">Mehr Info</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Kamera-System Update</td>
+                                    <td><span class="status-badge pending">GEPLANT</span></td>
+                                    <td><span class="priority medium">MITTEL</span></td>
+                                    <td><a href="#" class="link">Mehr Info</a></td>
+                                </tr>
+                                <tr class="classified">
+                                    <td><span class="encrypted">TOTEM_INHALT</span></td>
+                                    <td><span class="status-badge classified">VERSIEGELT</span></td>
+                                    <td><span class="priority critical">NUR BASTI</span></td>
+                                    <td><a href="#" class="link blocked">GESPERRT</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- System Message -->
+                <section class="panel system-panel">
+                    <div class="panel-header">
+                        <h2>⚙ Ori-Systemstatus</h2>
+                    </div>
+                    <div class="panel-content">
+                        <div class="system-message">
+                            <p><strong>Letzte Aktualisierung:</strong> 03.11.20<span class="redacted">██</span> - 14:47:23</p>
+                            <p><strong>Koffer-Status:</strong> <span class="status-ok">VERSIEGELT ✓</span></p>
+                            <p><strong>Basis-Sicherheit:</strong> <span class="security-level">STUFE MAXIMUM</span></p>
+                            <p><strong>Wächter Online:</strong> <span class="status-ok">5/5 AKTIV</span></p>
+                            <p><strong>Team Omega Bedrohung:</strong> <span style="color: #FF4500; font-weight: bold;">ERHÖHT ⚠</span></p>
+                            <div class="progress-bar-container">
+                                <div class="progress-label">Koffer-Integrität:</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 100%; background: linear-gradient(90deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);">100%</div>
+                                </div>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-label">Redstone-Systeme:</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 94%;">94%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Right Sidebar -->
+            <aside class="sidebar-right">
+                <div class="widget">
+                    <div class="widget-title">📌 Quick Links</div>
+                    <div class="widget-content">
+                        <ul class="link-list">
+                            <li><a href="#">→ Die 5 Hüter</a></li>
+                            <li><a href="#">→ Basis-Sicherheit</a></li>
+                            <li><a href="#">→ Wächter-Protokolle</a></li>
+                            <li><a href="#">→ Redstone-Systeme</a></li>
+                            <li class="separator"></li>
+                            <li><a href="#" class="special-link">→ [KOFFER_ZUGANG]</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="widget">
+                    <div class="widget-title">💡 Wussten Sie?</div>
+                    <div class="widget-content">
+                        <p class="fact-text">
+                            Das Ori-Projekt wurde mit dem Start im Oktober 20<span class="redacted">██</span> eingeführt. 
+                            Der mysteriöse Koffer – ein verzaubertes Totem aus Holz – verkörpert <span class="redacted">MACHT</span>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="widget ad-widget elytra-ad">
+                    <div class="widget-title">⚡ WERBUNG</div>
+                    <div class="widget-content">
+                        <div class="ad-box">
+                            <div class="ad-header blink">★ NEU ★</div>
+                            <div style="margin: 10px 0;">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Crect fill='%23FFD700' width='120' height='60'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='24' fill='%23000' font-weight='bold'%3EELYTRA%3C/text%3E%3C/svg%3E" alt="Elytra" style="width: 100%; border: 2px solid #000;">
+                            </div>
+                            <p style="font-size: 11px; line-height: 1.4; margin: 8px 0; font-weight: bold;">
+                                🦅 Der ultimative Fluggleiter! 🦅
+                            </p>
+                            <p style="font-size: 9px; line-height: 1.3; margin: 5px 0;">
+                                ✓ Fliegen wie nie zuvor!<br>
+                                ✓ JETZT mit Raketen-Boost!<br>
+                                ✓ Stylisches Design!
+                            </p>
+                            <div style="background: #FF0000; color: #FFFF00; padding: 4px; margin: 8px 0; border: 2px dashed #000; font-weight: bold; font-size: 10px; animation: blink 1s infinite;">
+                                🔥 NUR HEUTE: 50% RABATT! 🔥
+                            </div>
+                            <button class="btn-small" style="background: linear-gradient(180deg, #FF6B00 0%, #FF4500 100%); color: white; border: 2px outset #FF8C00;">JETZT KAUFEN!</button>
+                            <p style="font-size: 7px; color: #666; margin-top: 5px; font-style: italic;">
+                                *Keine Garantie für sichere Landung
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="widget counter-widget">
+                    <div class="widget-title">📊 Statistik</div>
+                    <div class="widget-content">
+                        <div class="counter">
+                            <div class="counter-label">Zugriffe heute:</div>
+                            <div class="counter-value" id="visitorCount">00042</div>
+                        </div>
+                        <div class="counter">
+                            <div class="counter-label">Koffer-Checks:</div>
+                            <div class="counter-value">99999</div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Ori Projekt</h4>
+                    <p>© <span class="redacted">10.20</span>██ - Ori :: Server <span class="encrypted">██</span></p>
+                    <p class="small-text">Est. <span class="encrypted">████</span> :: Bewacht seit <span class="redacted">Okt 20██</span></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Die 5 Hüter</a></li>
+                        <li><a href="#">Team Omega</a></li>
+                        <li><a href="#">Sicherheitsprotokolle</a></li>
+                        <li><a href="#">Server-Archiv</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>⚠ Warnung</h4>
+                    <p class="small-text">
+                        "Drei Fragezeichen. Ein Koffergeheim ist das größte Geheimnis."
+                        <br>
+                        <span class="code-text">ORI::0xCA13</span>
+                        <br>
+                        <em style="color: #FFD700;">Macht durch Geheimnis</em>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Optimiert für Internet Explorer 6.0+ und Netscape Navigator 7.0+ :: Eine sehr, sehr große Sache</p>
+                <p class="easter-egg" id="easterEgg">◈ ⟁ ◈</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

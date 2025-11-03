@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ori :: System Log</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: #000;
+            color: #0F0;
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .log-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #0a0a0a;
+            border: 2px solid #0F0;
+            box-shadow: 0 0 20px rgba(0,255,0,0.3);
+            animation: screenFlicker 0.1s infinite;
+        }
+
+        @keyframes screenFlicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.97; }
+        }
+
+        .log-header {
+            background: linear-gradient(180deg, #003300 0%, #001100 100%);
+            border-bottom: 2px solid #0F0;
+            padding: 20px;
+            position: relative;
+        }
+
+        .log-title {
+            font-size: 24px;
+            text-shadow: 0 0 10px rgba(0,255,0,0.8);
+            margin-bottom: 10px;
+        }
+
+        .log-info {
+            font-size: 11px;
+            color: #0C0;
+            opacity: 0.8;
+        }
+
+        .log-content {
+            padding: 20px;
+            height: 70vh;
+            overflow-y: auto;
+            background: #000;
+        }
+
+        .log-entry {
+            margin: 15px 0;
+            padding: 12px;
+            border-left: 3px solid #0F0;
+            background: rgba(0,255,0,0.05);
+            animation: logFadeIn 0.5s;
+        }
+
+        @keyframes logFadeIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .log-timestamp {
+            color: #FFD700;
+            font-size: 11px;
+            margin-bottom: 5px;
+        }
+
+        .log-level {
+            display: inline-block;
+            padding: 2px 8px;
+            margin-right: 10px;
+            font-size: 10px;
+            font-weight: bold;
+            border-radius: 2px;
+        }
+
+        .log-level.info { background: #0066FF; color: #FFF; }
+        .log-level.warning { background: #FF8C00; color: #000; }
+        .log-level.error { background: #FF0000; color: #FFF; }
+        .log-level.critical { background: #F0F; color: #FFF; animation: blink 1s infinite; }
+        .log-level.success { background: #00FF00; color: #000; }
+
+        .log-message {
+            color: #0F0;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .classified {
+            background: #000;
+            color: #000;
+            padding: 2px 8px;
+            border-radius: 2px;
+            cursor: help;
+            user-select: none;
+        }
+
+        .classified:hover {
+            background: #333;
+            color: #0F0;
+        }
+
+        .glitch-text {
+            animation: textGlitch 3s infinite;
+        }
+
+        @keyframes textGlitch {
+            0%, 90%, 100% { text-shadow: 0 0 5px #0F0; }
+            93% { text-shadow: 2px 0 #F00, -2px 0 #0FF; }
+            96% { text-shadow: -2px 0 #0F0, 2px 0 #F0F; }
+        }
+
+        .log-footer {
+            background: #001100;
+            border-top: 2px solid #0F0;
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 11px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 8px 20px;
+            background: linear-gradient(180deg, #003300 0%, #001100 100%);
+            border: 2px solid #0F0;
+            color: #0F0;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 10px rgba(0,255,0,0.3);
+        }
+
+        .back-btn:hover {
+            background: #0F0;
+            color: #000;
+            box-shadow: 0 0 20px rgba(0,255,0,0.8);
+        }
+
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0,255,0,0.03) 0px,
+                rgba(0,255,0,0.03) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0.3; }
+        }
+    </style>
+</head>
+<body>
+    <div class="scanline"></div>
+    
+    <div class="log-container">
+        <div class="log-header">
+            <div class="log-title">◈ ORI SYSTEM LOG ◈</div>
+            <div class="log-info">
+                Administrator: BastiGHG | Sicherheitsstufe: MAXIMUM | Status: <span class="glitch-text">AKTIV</span>
+            </div>
+        </div>
+
+        <div class="log-content">
+            <div class="log-entry">
+                <div class="log-timestamp">[03.11.20██ - 14:47:23]</div>
+                <span class="log-level success">LOGIN</span>
+                <div class="log-message">Administrator-Zugang bestätigt. Willkommen zurück, Basti.</div>
+            </div>
+
+            <div class="log-entry">
+                <div class="log-timestamp">[03.11.20██ - 14:32:15]</div>
+                <span class="log-level warning">SICHERHEIT</span>
+                <div class="log-message">Team Omega Aktivität erhöht. Eindringversuch protokolliert: IP <span class="classified">███.███.███.███</span></div>
+            </div>
+
+            <div class="log-entry">
+                <div class="log-timestamp">[03.11.20██ - 12:18:44]</div>
+                <span class="log-level info">SYSTEM</span>
+                <div class="log-message">Wächter-Rotation erfolgreich durchgeführt. Alle 5 Hüter online und bereit.</div>
+            </div>
+
+            <div class="log-entry">
+                <div class="log-timestamp">[02.11.20██ - 23:47:09]</div>
+                <span class="log-level error">ALARM</span>
+                <div class="log-message">Nicht autorisierter Zugriffsversuch auf Koffer-Datenbank. Quelle: Team Omega</div>
+            </div>
+
+            <div class="log-entry">
+                <div class="log-timestamp">[02.11.20██ - 18:22:33]</div>
+                <span class="log-level info">WARTUNG</span>
+                <div class="log-message">Redstone-Sicherheitssystem Update v2.3 installiert. Kamera-Netzwerk erweitert.</div>
+            </div>
+
+            <div class="log-entry">
+                <div class="log-timestamp">[01.11.20██ - 09:15:27]</div>
+                <span class="log-level critical">KRITISCH</span>
+                <div class="log-message">Koffer-Integrität-Check: <span style="color: #FFD700;">100% VERSIEGELT</span> | Keine Manipulationen festgestellt</div>
+            </div>
+
+            <div class="log-entry">
+                <div class="log-timestamp">[31.10.20██ - 16:03:12]</div>
+                <span class="log-level warning">ÜBERWACHUNG</span>
+                <div class="log-message">Team Omega Meeting erkannt. Teilnehmer: <span class="classified">█████</span>. Überwachung verstärkt.</div>
+            </div>
+
+            <div class="log-entry">
+                <div class="log-timestamp">[30.10.20██ - 22:44:51]</div>
+                <span class="log-level info">HÜTER</span>
+                <div class="log-message">Wächter nooreax: Patrouillenrunde abgeschlossen. Basis: SICHER</div>
+            </div>
+
+            <div class="log-entry">
+                <div class="log-timestamp">[29.10.20██ - 14:28:03]</div>
+                <span class="log-level info">HÜTER</span>
+                <div class="log-message">Wächter Faister: Perimeter-Check bestanden. Keine Anomalien.</div>
+            </div>
+
+            <div class="log-entry">
+                <div class="log-timestamp">[28.10.20██ - 11:55:19]</div>
+                <span class="log-level warning">SICHERHEIT</span>
+                <div class="log-message">Unbekanntes Signal aus Sektor 7 empfangen. Hüter entsandt zur Untersuchung.</div>
+            </div>
+
+            <div class="log-entry">
+                <div class="log-timestamp">[25.10.20██ - 08:12:44]</div>
+                <span class="log-level success">SYSTEM</span>
+                <div class="log-message">Basis-Erweiterung abgeschlossen. Neue geheime Ausgänge installiert.</div>
+            </div>
+
+            <div class="log-entry">
+                <div class="log-timestamp">[20.10.20██ - 19:33:07]</div>
+                <span class="log-level info">HÜTER</span>
+                <div class="log-message">Wächter NQRMAN, byStegi, CastCrafter: Gemeinsame Sicherheitsübung erfolgreich.</div>
+            </div>
+
+            <div class="log-entry">
+                <div class="log-timestamp">[15.10.20██ - 13:07:22]</div>
+                <span class="log-level critical">GEHEIM</span>
+                <div class="log-message">Koffer-Inhalt Status: <span class="classified">███████████████████</span> | NUR BASTI: <span class="classified">████████</span></div>
+            </div>
+
+            <div class="log-entry">
+                <div class="log-timestamp">[10.10.20██ - 10:00:00]</div>
+                <span class="log-level success">INIT</span>
+                <div class="log-message">Ori-Projekt offiziell gestartet. Die 5 Hüter wurden aktiviert. Macht durch Geheimnis.</div>
+            </div>
+
+            <div class="log-entry">
+                <div class="log-timestamp">[05.10.20██ - 00:00:01]</div>
+                <span class="log-level critical">SYSTEM</span>
+                <div class="log-message glitch-text">◈ DAS GRÖSSTE GEHEIMNIS BEGINNT ◈</div>
+            </div>
+        </div>
+
+        <div class="log-footer">
+            <div style="margin-bottom: 10px; color: #0C0;">
+                System-Integrität: 100% | Koffer: VERSIEGELT | Wächter: 5/5 AKTIV
+            </div>
+            <a href="index.html" class="back-btn">← ZURÜCK ZUR ZENTRALE</a>
+            <button class="back-btn" onclick="window.location.reload()">⟳ LOG AKTUALISIEREN</button>
+        </div>
+    </div>
+
+    <script>
+        // Add auto-scroll to bottom on load
+        const logContent = document.querySelector('.log-content');
+        logContent.scrollTop = logContent.scrollHeight;
+
+        // Random screen flicker effect
+        setInterval(() => {
+            if (Math.random() < 0.05) {
+                document.body.style.opacity = '0.95';
+                setTimeout(() => {
+                    document.body.style.opacity = '1';
+                }, 50);
+            }
+        }, 2000);
+
+        // Console message
+        console.log('%c◈ ORI SYSTEM LOG ◈', 'color: #0F0; font-size: 20px; font-weight: bold; background: #000; padding: 10px;');
+        console.log('%cAdministrator-Zugang aktiv', 'color: #FFD700; font-size: 14px;');
+        console.log('%cDrei Fragezeichen. Ein Koffergeheim.', 'color: #0C0; font-style: italic;');
+    </script>
+</body>
+</html>
