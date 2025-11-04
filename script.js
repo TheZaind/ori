@@ -5,16 +5,7 @@
 
 // === AUDIO SETUP ===
 const introSound = new Audio('data/intro.mp3');
-const glitchSound = new Audio('data/Glitch Sound 1.wav');
-
-// Play intro on first load
-let hasPlayedIntro = sessionStorage.getItem('oriIntroPlayed');
-if (!hasPlayedIntro) {
-    window.addEventListener('load', function() {
-        introSound.play().catch(e => console.log('Audio autoplay prevented:', e));
-        sessionStorage.setItem('oriIntroPlayed', 'true');
-    });
-}
+const glitchSound = new Audio('data/Glitch.mp3');
 
 // === ACCESS DENIED POP-UP ===
 function showAccessDenied(event) {
@@ -47,6 +38,26 @@ document.addEventListener('DOMContentLoaded', function() {
     initNavigation();
     initRandomGlitches();
     initLoginBlockGlitch();
+    
+    // Play intro sound on first visit
+    let hasPlayedIntro = sessionStorage.getItem('oriIntroPlayed');
+    if (!hasPlayedIntro) {
+        // Small delay to ensure page is ready
+        setTimeout(() => {
+            introSound.play().then(() => {
+                console.log('Intro sound playing');
+                sessionStorage.setItem('oriIntroPlayed', 'true');
+            }).catch(e => {
+                console.log('Audio autoplay prevented - click anywhere to enable sound');
+                // Try to play on first user interaction
+                document.addEventListener('click', function playOnClick() {
+                    introSound.play().catch(e => console.log('Audio error:', e));
+                    sessionStorage.setItem('oriIntroPlayed', 'true');
+                    document.removeEventListener('click', playOnClick);
+                }, { once: true });
+            });
+        }, 500);
+    }
 });
 
 // === CREDENTIAL OBFUSCATION ===
@@ -581,6 +592,10 @@ setInterval(() => {
 // === RANDOM OBJECT GLITCHES ===
 function initRandomGlitches() {
     function applyRandomGlitch() {
+        // Play glitch sound FIRST
+        glitchSound.currentTime = 0;
+        glitchSound.play().catch(e => console.log('Glitch sound error:', e));
+        
         // Select random elements that can glitch
         const glitchableElements = document.querySelectorAll(
             '.panel, .widget, .info-box, .guardian-card, .nav-btn, h1, h2, h3, .logo, .status-badge, button, .data-table tr'
@@ -659,10 +674,6 @@ function initRandomGlitches() {
         // Apply random glitch effect
         const randomGlitch = glitchEffects[Math.floor(Math.random() * glitchEffects.length)];
         randomGlitch();
-        
-        // Play glitch sound
-        glitchSound.currentTime = 0;
-        glitchSound.play().catch(e => console.log('Glitch sound error:', e));
     }
     
     // Random interval between 10-30 seconds
