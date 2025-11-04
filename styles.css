@@ -1153,373 +1153,180 @@ footer {
 
 /* === RESPONSIVE === */
 @media (max-width: 900px) {
-    .main-content {
-        grid-template-columns: 1fr;
+    /* Keep desktop layout, just make container fit */
+    .container {
+        margin: 5px;
+        max-width: 100%;
     }
     
-    .sidebar-right {
-        display: flex;
-        order: 3;
-    }
-
-    .sidebar {
-        order: 1;
-    }
-
-    .content {
-        order: 2;
-    }
-    
-    .info-boxes {
-        grid-template-columns: 1fr;
-    }
-    
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: 20px;
+    body {
+        font-size: 10px;
     }
 }
 
 /* === MOBILE OPTIMIZATION === */
 @media (max-width: 768px) {
+    /* Keep exact desktop layout, just scale everything down */
     body {
-        font-size: 11px;
-    }
-
-    /* Smooth scrolling for mobile */
-    * {
-        -webkit-overflow-scrolling: touch;
+        font-size: 9px;
+        padding: 0;
     }
 
     html {
         scroll-behavior: smooth;
     }
 
-    /* Container adjustments */
+    /* Container stays the same, just fits screen */
     .container {
-        margin: 5px;
+        margin: 2px;
         border-radius: 4px 4px 0 0;
         border-width: 2px;
+        max-width: 100%;
     }
 
-    /* Titlebar */
+    /* Titlebar slightly smaller */
     .titlebar {
-        height: 32px;
-        padding: 0 8px;
+        height: 24px;
+        padding: 0 5px;
     }
 
     .titlebar-left {
-        gap: 6px;
-        font-size: 10px;
+        gap: 4px;
+        font-size: 9px;
     }
 
     .window-icon {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .titlebar-btn {
-        width: 28px;
-        height: 28px;
-        font-size: 16px;
+        width: 18px;
+        height: 18px;
+        font-size: 12px;
     }
 
-    /* Header */
-    header {
-        padding: 12px;
-    }
-
-    .header-content {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .logo-section {
-        text-align: center;
-    }
-
-    .logo {
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .symbol {
-        font-size: 32px;
-    }
-
-    .ori-text {
-        font-size: 28px;
-    }
-
-    .tagline {
-        font-size: 11px;
-    }
-
-    .header-info {
-        text-align: center;
-        font-size: 10px;
-    }
-
-    /* Navigation */
-    .navbar {
-        flex-wrap: wrap;
-        gap: 4px;
-        padding: 8px;
-    }
-
-    .nav-btn {
-        flex: 1 1 calc(50% - 4px);
-        min-width: calc(50% - 4px);
-        padding: 10px 8px;
-        font-size: 10px;
-    }
-
-    .nav-icon {
-        font-size: 16px;
-    }
-
-    /* Marquee */
-    .marquee-container {
-        font-size: 10px;
-        padding: 6px 0;
-    }
-
-    /* Main Content */
+    /* Keep 3-column layout but scale it */
     .main-content {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: 180px 1fr 160px;
         gap: 10px;
         padding: 10px;
     }
 
-    /* Sidebars */
-    .sidebar,
-    .sidebar-right {
-        display: block;
-        width: 100%;
-    }
-
-    .widget {
-        margin-bottom: 12px;
-    }
-
+    /* Scale down text slightly but keep structure */
     .widget-title {
-        font-size: 11px;
-        padding: 6px 10px;
+        font-size: 9px;
+        padding: 4px 8px;
     }
 
     .widget-content {
-        padding: 10px;
-        font-size: 10px;
-    }
-
-    /* Panels */
-    .panel {
-        margin-bottom: 12px;
-    }
-
-    .panel-header {
-        padding: 10px;
+        padding: 8px;
+        font-size: 9px;
     }
 
     .panel-header h1 {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .panel-header h2 {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .panel-content {
-        padding: 12px;
-        font-size: 11px;
+        font-size: 9px;
+        padding: 10px;
     }
 
-    /* Info Boxes */
-    .info-boxes {
-        grid-template-columns: 1fr;
-        gap: 10px;
+    /* Navigation stays horizontal */
+    .navbar {
+        gap: 3px;
+        padding: 5px;
+        flex-wrap: wrap;
     }
 
-    .info-box {
-        padding: 12px;
+    .nav-btn {
+        padding: 6px 8px;
+        font-size: 8px;
+        flex: 1 1 auto;
+        min-width: 80px;
     }
 
-    .info-icon {
-        font-size: 28px;
+    .nav-icon {
+        font-size: 12px;
     }
 
-    .info-box h3 {
-        font-size: 13px;
-    }
-
-    /* Guardians Grid */
-    .guardians-grid {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-
-    .guardian-card {
-        padding: 12px;
-    }
-
-    .guardian-icon {
-        font-size: 28px;
-    }
-
-    .guardian-name {
-        font-size: 14px;
-    }
-
-    /* Data Table */
+    /* Tables stay full width, just smaller text */
     .data-table {
-        font-size: 10px;
+        font-size: 8px;
     }
 
     .data-table th,
     .data-table td {
-        padding: 8px 6px;
+        padding: 6px 4px;
     }
 
-    /* Make table scrollable on mobile */
-    .panel-content:has(.data-table) {
-        overflow-x: auto;
-    }
-
-    .data-table {
-        min-width: 500px;
-    }
-
-    /* Login Form */
-    .login-form {
+    /* Guardian grid stays as grid, just smaller */
+    .guardians-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
         gap: 8px;
     }
 
-    .input-field {
+    .guardian-card {
         padding: 8px;
-        font-size: 11px;
     }
 
-    .btn-submit {
-        padding: 10px;
-        font-size: 11px;
-    }
-
-    /* News List */
-    .news-list li {
-        font-size: 10px;
-        padding: 6px 0;
-    }
-
-    .date {
-        font-size: 9px;
-    }
-
-    /* Link List */
-    .link-list li {
-        font-size: 10px;
-    }
-
-    /* Footer */
-    footer {
-        padding: 15px 10px;
-    }
-
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-
-    .footer-section h4 {
-        font-size: 12px;
-    }
-
-    .footer-section {
-        font-size: 10px;
-    }
-
-    .footer-bottom {
-        font-size: 9px;
-        padding-top: 12px;
-    }
-
-    /* Mystery Box */
-    .mystery-box {
-        padding: 10px;
-    }
-
-    .glitch-text {
-        font-size: 7px;
-        word-break: break-all;
-    }
-
-    /* Ad Widget */
-    .ad-box {
-        padding: 10px;
-    }
-
-    .ad-header {
-        font-size: 12px;
-    }
-
-    /* Progress Bars */
-    .progress-bar-container {
-        font-size: 10px;
-    }
-
-    .progress-bar {
-        height: 18px;
-    }
-
-    /* Counter Widget */
-    .counter-label {
-        font-size: 9px;
-    }
-
-    .counter-value {
+    .guardian-icon {
         font-size: 20px;
     }
 
-    /* System Panel */
-    .system-message {
-        font-size: 10px;
+    /* Info boxes stay as grid */
+    .info-boxes {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
     }
 
-    .system-message p {
-        margin: 6px 0;
-    }
-}
-
-/* === VERY SMALL MOBILE (< 480px) === */
-@media (max-width: 480px) {
-    body {
-        font-size: 10px;
-    }
-
-    .container {
-        margin: 2px;
-        border-width: 1px;
-    }
-
-    .titlebar {
-        height: 28px;
-    }
-
-    .titlebar-left {
-        font-size: 9px;
-        gap: 4px;
-    }
-
-    .window-title {
-        display: none;
-    }
-
-    .titlebar-btn {
-        width: 24px;
-        height: 24px;
-        font-size: 14px;
-    }
-
-    header {
+    .info-box {
         padding: 8px;
+    }
+
+    .info-icon {
+        font-size: 20px;
+    }
+
+    /* Footer stays same structure */
+    .footer-content {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    footer {
+        padding: 10px;
+    }
+
+    .footer-section {
+        font-size: 8px;
+    }
+
+    /* Forms smaller but same layout */
+    .input-field {
+        padding: 6px;
+        font-size: 9px;
+    }
+
+    .btn-submit {
+        padding: 8px;
+        font-size: 9px;
+    }
+
+    /* Header stays horizontal */
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    .logo {
+        gap: 8px;
     }
 
     .symbol {
@@ -1531,56 +1338,165 @@ footer {
     }
 
     .tagline {
-        font-size: 10px;
-    }
-
-    .navbar {
-        gap: 3px;
-        padding: 6px;
-    }
-
-    .nav-btn {
-        padding: 8px 6px;
         font-size: 9px;
     }
 
-    .nav-icon {
-        font-size: 14px;
+    .header-info {
+        font-size: 8px;
+        text-align: right;
     }
 
-    .main-content {
-        padding: 6px;
-        gap: 8px;
+    .marquee-container {
+        font-size: 8px;
+        padding: 4px 0;
     }
 
-    .panel-header h1 {
-        font-size: 14px;
+    /* Lists and links */
+    .news-list li {
+        font-size: 8px;
+        padding: 4px 0;
     }
 
-    .panel-header h2 {
-        font-size: 12px;
+    .link-list li {
+        font-size: 8px;
     }
 
-    .panel-content {
+    .date {
+        font-size: 7px;
+    }
+
+    /* Mystery box */
+    .glitch-text {
+        font-size: 6px;
+        word-break: break-all;
+    }
+
+    /* Progress bars */
+    .progress-bar {
+        height: 16px;
+    }
+
+    .progress-label {
+        font-size: 8px;
+    }
+
+    /* Counter */
+    .counter-value {
+        font-size: 16px;
+    }
+
+    .counter-label {
+        font-size: 8px;
+    }
+
+    /* Ad box */
+    .ad-box {
         padding: 8px;
+    }
+
+    .ad-header {
         font-size: 10px;
+    }
+}
+
+/* === VERY SMALL MOBILE (< 480px) === */
+@media (max-width: 480px) {
+    /* Even smaller but STILL keep the 3-column layout */
+    body {
+        font-size: 8px;
+    }
+
+    .container {
+        margin: 1px;
+        border-width: 1px;
+    }
+
+    .titlebar {
+        height: 22px;
+    }
+
+    .titlebar-btn {
+        width: 16px;
+        height: 16px;
+        font-size: 10px;
+    }
+
+    /* Keep 3 columns but make them narrower */
+    .main-content {
+        grid-template-columns: 140px 1fr 130px;
+        gap: 6px;
+        padding: 6px;
+    }
+
+    .widget-title {
+        font-size: 8px;
+        padding: 3px 6px;
     }
 
     .widget-content {
+        padding: 6px;
+        font-size: 8px;
+    }
+
+    .panel-header h1 {
+        font-size: 12px;
+    }
+
+    .panel-header h2 {
+        font-size: 10px;
+    }
+
+    .panel-content {
+        font-size: 8px;
         padding: 8px;
     }
 
-    .guardians-grid {
-        gap: 8px;
+    .nav-btn {
+        padding: 5px 6px;
+        font-size: 7px;
+        min-width: 60px;
+    }
+
+    .nav-icon {
+        font-size: 10px;
     }
 
     .data-table {
-        font-size: 9px;
+        font-size: 7px;
     }
 
     .data-table th,
     .data-table td {
-        padding: 6px 4px;
+        padding: 4px 3px;
+    }
+
+    .info-boxes {
+        gap: 6px;
+    }
+
+    .info-box {
+        padding: 6px;
+    }
+
+    .guardians-grid {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        gap: 6px;
+    }
+
+    .symbol {
+        font-size: 24px;
+    }
+
+    .ori-text {
+        font-size: 20px;
+    }
+
+    .footer-content {
+        gap: 8px;
+    }
+
+    .footer-section {
+        font-size: 7px;
     }
 }
 
@@ -1723,61 +1639,4 @@ body::before {
     pointer-events: none;
     z-index: 9999;
     opacity: 0.3;
-}
-
-/* === TOUCH OPTIMIZATION === */
-@media (hover: none) and (pointer: coarse) {
-    /* Larger touch targets for mobile */
-    .nav-btn,
-    .titlebar-btn,
-    .btn-submit,
-    .back-btn,
-    button,
-    a {
-        min-height: 44px;
-        min-width: 44px;
-    }
-
-    .nav-btn {
-        padding: 12px 10px;
-    }
-
-    .link-list a,
-    .footer-links a {
-        display: block;
-        padding: 10px 5px;
-    }
-
-    /* Remove hover effects on touch devices */
-    .nav-btn:hover,
-    .panel:hover,
-    .widget:hover,
-    .guardian-card:hover,
-    .info-box:hover {
-        transform: none;
-    }
-
-    /* Better scrolling */
-    .log-content,
-    .panel-content {
-        -webkit-overflow-scrolling: touch;
-    }
-}
-
-/* === LANDSCAPE MOBILE === */
-@media (max-width: 900px) and (orientation: landscape) {
-    .log-content {
-        height: 50vh;
-    }
-
-    .navbar {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .nav-btn {
-        flex: 0 0 auto;
-        min-width: 100px;
-    }
 }

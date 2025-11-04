@@ -168,10 +168,10 @@
             50%, 100% { opacity: 0.3; }
         }
 
-        /* === MOBILE OPTIMIZATION === */
+        /* === MOBILE OPTIMIZATION - Keep desktop look === */
         @media (max-width: 768px) {
             body {
-                padding: 10px 5px;
+                padding: 5px 3px;
             }
 
             .log-container {
@@ -179,7 +179,7 @@
             }
 
             .log-header {
-                padding: 15px 12px;
+                padding: 12px 10px;
             }
 
             .log-title {
@@ -188,61 +188,46 @@
 
             .log-info {
                 font-size: 9px;
-                line-height: 1.5;
             }
 
             .log-content {
-                padding: 12px 8px;
-                height: 65vh;
+                padding: 10px 8px;
+                height: 70vh;
             }
 
             .log-entry {
                 margin: 12px 0;
                 padding: 10px;
-                border-left-width: 2px;
             }
 
             .log-timestamp {
                 font-size: 9px;
-                margin-bottom: 4px;
             }
 
             .log-level {
                 font-size: 8px;
                 padding: 2px 6px;
-                margin-right: 8px;
             }
 
             .log-message {
                 font-size: 11px;
-                line-height: 1.5;
             }
 
             .log-footer {
-                padding: 12px;
-                font-size: 10px;
+                padding: 10px;
+                font-size: 9px;
             }
 
             .back-btn {
-                padding: 10px 16px;
-                font-size: 10px;
-                margin: 8px 4px;
-                display: inline-block;
-            }
-
-            .classified {
-                font-size: 10px;
-                padding: 2px 6px;
+                padding: 8px 12px;
+                font-size: 9px;
+                margin: 5px 3px;
             }
         }
 
         @media (max-width: 480px) {
             body {
-                padding: 5px 2px;
-            }
-
-            .log-header {
-                padding: 12px 10px;
+                padding: 3px 2px;
             }
 
             .log-title {
@@ -251,13 +236,11 @@
 
             .log-info {
                 font-size: 8px;
-                line-height: 1.4;
-                word-break: break-word;
             }
 
             .log-content {
-                padding: 10px 6px;
-                height: 60vh;
+                padding: 8px 6px;
+                height: 70vh;
             }
 
             .log-entry {
@@ -271,45 +254,26 @@
 
             .log-level {
                 font-size: 7px;
-                padding: 2px 5px;
-                margin-right: 6px;
-                display: inline-block;
-                margin-bottom: 4px;
+                padding: 2px 4px;
             }
 
             .log-message {
                 font-size: 10px;
-                line-height: 1.4;
             }
 
             .log-footer {
-                padding: 10px 8px;
-                font-size: 9px;
+                padding: 8px;
+                font-size: 8px;
             }
 
             .back-btn {
-                padding: 8px 12px;
-                font-size: 9px;
-                display: block;
-                width: 100%;
-                margin: 6px 0;
-                text-align: center;
-                box-sizing: border-box;
+                padding: 6px 10px;
+                font-size: 8px;
+                margin: 4px 2px;
             }
 
             .classified {
-                font-size: 9px;
-                padding: 1px 4px;
-            }
-
-            .scanline {
-                background: repeating-linear-gradient(
-                    0deg,
-                    rgba(0,255,0,0.02) 0px,
-                    rgba(0,255,0,0.02) 1px,
-                    transparent 1px,
-                    transparent 2px
-                );
+                font-size: 8px;
             }
         }
     </style>
