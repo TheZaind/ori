@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-    <!-- Windows 2000 Style Title Bar -->
+        <!-- Windows 2000 Style Title Bar -->
     <div class="titlebar">
         <div class="titlebar-left">
             <span class="window-icon">◈</span>
@@ -20,9 +20,7 @@
             <button class="titlebar-btn" id="maximize">□</button>
             <button class="titlebar-btn close-btn" id="close">×</button>
         </div>
-    </div>
-
-    <!-- Main Container -->
+    </div>    <!-- Main Container -->
     <div class="container">
         <!-- Header Section -->
         <header>
@@ -43,27 +41,27 @@
 
         <!-- Navigation Bar -->
         <nav class="navbar">
-            <a href="#" class="nav-btn active">
+            <a href="#" class="nav-btn active" onclick="showAccessDenied(event)">
                 <span class="nav-icon">🏠</span>
                 <span>Home</span>
             </a>
-            <a href="#about" class="nav-btn">
+            <a href="#about" class="nav-btn" onclick="showAccessDenied(event)">
                 <span class="nav-icon">📜</span>
                 <span>Das Projekt</span>
             </a>
-            <a href="#members" class="nav-btn">
+            <a href="#members" class="nav-btn" onclick="showAccessDenied(event)">
                 <span class="nav-icon">�️</span>
                 <span>Die 5 Hüter</span>
             </a>
-            <a href="#archive" class="nav-btn">
+            <a href="#archive" class="nav-btn" onclick="showAccessDenied(event)">
                 <span class="nav-icon">📁</span>
                 <span>Ereignisse</span>
             </a>
-            <a href="#research" class="nav-btn">
+            <a href="#research" class="nav-btn" onclick="showAccessDenied(event)">
                 <span class="nav-icon">�</span>
                 <span>Sicherheit</span>
             </a>
-            <a href="#contact" class="nav-btn">
+            <a href="#contact" class="nav-btn" onclick="showAccessDenied(event)">
                 <span class="nav-icon">⚠</span>
                 <span>Team Omega</span>
             </a>
@@ -253,37 +251,37 @@
                                     <td>Koffer-Sicherung ALPHA</td>
                                     <td><span class="status-badge active">AKTIV</span></td>
                                     <td><span class="priority critical">KRITISCH</span></td>
-                                    <td><a href="#" class="link">Mehr Info</a></td>
+                                    <td><a href="#" class="link" onclick="showAccessDenied(event)">Mehr Info</a></td>
                                 </tr>
                                 <tr>
                                     <td>Basis-Ausbau (Redstone)</td>
                                     <td><span class="status-badge progress">LÄUFT</span></td>
                                     <td><span class="priority high">HOCH</span></td>
-                                    <td><a href="#" class="link">Mehr Info</a></td>
+                                    <td><a href="#" class="link" onclick="showAccessDenied(event)">Mehr Info</a></td>
                                 </tr>
                                 <tr>
                                     <td>Wächter-Protokoll v2.0</td>
                                     <td><span class="status-badge active">AKTIV</span></td>
                                     <td><span class="priority high">HOCH</span></td>
-                                    <td><a href="#" class="link">Mehr Info</a></td>
+                                    <td><a href="#" class="link" onclick="showAccessDenied(event)">Mehr Info</a></td>
                                 </tr>
                                 <tr>
                                     <td>Team Omega Abwehr</td>
                                     <td><span class="status-badge progress">LÄUFT</span></td>
                                     <td><span class="priority critical">KRITISCH</span></td>
-                                    <td><a href="#" class="link">Mehr Info</a></td>
+                                    <td><a href="#" class="link" onclick="showAccessDenied(event)">Mehr Info</a></td>
                                 </tr>
                                 <tr>
                                     <td>Kamera-System Update</td>
                                     <td><span class="status-badge pending">GEPLANT</span></td>
                                     <td><span class="priority medium">MITTEL</span></td>
-                                    <td><a href="#" class="link">Mehr Info</a></td>
+                                    <td><a href="#" class="link" onclick="showAccessDenied(event)">Mehr Info</a></td>
                                 </tr>
                                 <tr class="classified">
                                     <td><span class="encrypted">TOTEM_INHALT</span></td>
                                     <td><span class="status-badge classified">VERSIEGELT</span></td>
                                     <td><span class="priority critical">NUR BASTI</span></td>
-                                    <td><a href="#" class="link blocked">GESPERRT</a></td>
+                                    <td><a href="#" class="link blocked" onclick="showAccessDenied(event)">GESPERRT</a></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -325,12 +323,12 @@
                     <div class="widget-title">📌 Quick Links</div>
                     <div class="widget-content">
                         <ul class="link-list">
-                            <li><a href="#">→ Die 5 Hüter</a></li>
-                            <li><a href="#">→ Basis-Sicherheit</a></li>
-                            <li><a href="#">→ Wächter-Protokolle</a></li>
-                            <li><a href="#">→ Redstone-Systeme</a></li>
+                            <li><a href="#" onclick="showAccessDenied(event)">→ Die 5 Hüter</a></li>
+                            <li><a href="#" onclick="showAccessDenied(event)">→ Basis-Sicherheit</a></li>
+                            <li><a href="#" onclick="showAccessDenied(event)">→ Wächter-Protokolle</a></li>
+                            <li><a href="#" onclick="showAccessDenied(event)">→ Redstone-Systeme</a></li>
                             <li class="separator"></li>
-                            <li><a href="#" class="special-link">→ [KOFFER_ZUGANG]</a></li>
+                            <li><a href="https://www.youtube.com/@ZaindTV" class="special-link" target="_blank" rel="noopener noreferrer">→ [KOFFER_ZUGANG]</a></li>
                         </ul>
                     </div>
                 </div>
@@ -364,7 +362,9 @@
                             <div style="background: #FF0000; color: #FFFF00; padding: 4px; margin: 8px 0; border: 2px dashed #000; font-weight: bold; font-size: 10px; animation: blink 1s infinite;">
                                 🔥 NUR HEUTE: 50% RABATT! 🔥
                             </div>
-                            <button class="btn-small" style="background: linear-gradient(180deg, #FF6B00 0%, #FF4500 100%); color: white; border: 2px outset #FF8C00;">JETZT KAUFEN!</button>
+                            <a href="https://bastighg.shop/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                                <button class="btn-small" style="background: linear-gradient(180deg, #FF6B00 0%, #FF4500 100%); color: white; border: 2px outset #FF8C00;">JETZT KAUFEN!</button>
+                            </a>
                             <p style="font-size: 7px; color: #666; margin-top: 5px; font-style: italic;">
                                 *Keine Garantie für sichere Landung
                             </p>
@@ -399,10 +399,10 @@
                 <div class="footer-section">
                     <h4>Navigation</h4>
                     <ul class="footer-links">
-                        <li><a href="#">Die 5 Hüter</a></li>
-                        <li><a href="#">Team Omega</a></li>
-                        <li><a href="#">Sicherheitsprotokolle</a></li>
-                        <li><a href="#">Server-Archiv</a></li>
+                        <li><a href="#" onclick="showAccessDenied(event)">Die 5 Hüter</a></li>
+                        <li><a href="#" onclick="showAccessDenied(event)">Team Omega</a></li>
+                        <li><a href="#" onclick="showAccessDenied(event)">Sicherheitsprotokolle</a></li>
+                        <li><a href="#" onclick="showAccessDenied(event)">Server-Archiv</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">

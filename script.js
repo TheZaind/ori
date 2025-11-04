@@ -3,6 +3,25 @@
 // Windows 2000s era functionality with ARG elements
 // ================================================
 
+// === ACCESS DENIED POP-UP ===
+function showAccessDenied(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    
+    const messages = [
+        '🚫 KEIN ZUTRITT!\n\nBitte melden Sie sich an, um auf diesen Bereich zuzugreifen.',
+        '⚠ ZUGRIFF VERWEIGERT!\n\nNur autorisierte Mitglieder haben Zugang.\nBitte melden Sie sich an.',
+        '🔒 GESPERRT!\n\nDieser Bereich ist geschützt.\nBitte melden Sie sich zuerst an.',
+        '❌ AUTHENTIFIZIERUNG ERFORDERLICH!\n\nSie müssen sich anmelden, um fortzufahren.',
+        '🛡️ SICHERHEITSWARNUNG!\n\nUnbefugter Zugriff nicht gestattet.\nBitte melden Sie sich an.'
+    ];
+    
+    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+    alert(randomMessage);
+    
+    return false;
+}
+
 // === INITIALIZATION ===
 document.addEventListener('DOMContentLoaded', function() {
     initDateTime();
@@ -361,25 +380,6 @@ function initMysteryBox() {
             if (clickCount === 1) {
                 mysteryBox.style.transform = 'scale(1.05)';
                 setTimeout(() => mysteryBox.style.transform = 'scale(1)', 200);
-            }
-            
-            if (clickCount === 3) {
-                const glitchText = mysteryBox.querySelector('.glitch-text');
-                if (glitchText) {
-                    // Decode binary message to Ori-specific text
-                    glitchText.style.fontSize = '11px';
-                    glitchText.textContent = 'DER KOFFER BLEIBT VERSIEGELT - MACHT DURCH GEHEIMNIS';
-                    glitchText.style.color = '#FFD700';
-                    glitchText.style.letterSpacing = '1px';
-                    
-                    setTimeout(() => {
-                        glitchText.style.fontSize = '8px';
-                        glitchText.textContent = '01001111010100100100100100101101010010110100001101000001001100010011001100101101010000100100000101010011010101000100100101000111010010000100011101000111';
-                        glitchText.style.color = '#0F0';
-                        glitchText.style.letterSpacing = '0';
-                        clickCount = 0;
-                    }, 5000);
-                }
             }
             
             if (clickCount === 5) {
