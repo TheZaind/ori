@@ -723,43 +723,45 @@ function initLoginBlockGlitch() {
     };
 
     const trigger = () => {
-        const pieces = 3 + Math.floor(Math.random() * 3); // 3-5 slices
-    widget.classList.add('login-glitching');
-        
-    // Play glitch sound synced with visual frame
-    requestAnimationFrame(() => playGlitchSound());
-
-        for (let i = 0; i < pieces; i++) {
-            const clone = widget.cloneNode(true);
-            clone.classList.remove('login-widget-glitch');
-            clone.classList.add('login-glitch-clone');
-
-            const form = clone.querySelector('#loginForm');
-            if (form) {
-                form.removeAttribute('id');
-            }
-
-            const top = Math.random() * 80;
-            const height = 5 + Math.random() * 15;
-            const bottom = Math.max(0, 100 - top - height);
-            const offset = (Math.random() - 0.5) * 20; // -10px to 10px horizontal shift
-            const hue = Math.floor(Math.random() * 360);
-
-            clone.style.clipPath = `inset(${top}% 0% ${bottom}% 0%)`;
-            clone.style.transform = `translate(${offset}px, 0)`;
-            clone.style.filter = `hue-rotate(${hue}deg)`;
-            clone.style.opacity = '0.7';
-
-            widget.appendChild(clone);
-
-            setTimeout(() => {
-                clone.remove();
-            }, 180);
-        }
+        // Start sound slightly before the visual effect
+        playGlitchSound();
 
         setTimeout(() => {
-            widget.classList.remove('login-glitching');
-        }, 200);
+            const pieces = 3 + Math.floor(Math.random() * 3); // 3-5 slices
+            widget.classList.add('login-glitching');
+
+            for (let i = 0; i < pieces; i++) {
+                const clone = widget.cloneNode(true);
+                clone.classList.remove('login-widget-glitch');
+                clone.classList.add('login-glitch-clone');
+
+                const form = clone.querySelector('#loginForm');
+                if (form) {
+                    form.removeAttribute('id');
+                }
+
+                const top = Math.random() * 80;
+                const height = 5 + Math.random() * 15;
+                const bottom = Math.max(0, 100 - top - height);
+                const offset = (Math.random() - 0.5) * 20; // -10px to 10px horizontal shift
+                const hue = Math.floor(Math.random() * 360);
+
+                clone.style.clipPath = `inset(${top}% 0% ${bottom}% 0%)`;
+                clone.style.transform = `translate(${offset}px, 0)`;
+                clone.style.filter = `hue-rotate(${hue}deg)`;
+                clone.style.opacity = '0.7';
+
+                widget.appendChild(clone);
+
+                setTimeout(() => {
+                    clone.remove();
+                }, 180);
+            }
+
+            setTimeout(() => {
+                widget.classList.remove('login-glitching');
+            }, 200);
+        }, 300); // delay visuals to let the audio lead
     };
 
     scheduleNext();
@@ -789,7 +791,11 @@ console.log('   nooreax • Faister • NQRMAN • byStegi • CastCrafter');
 console.log(' ');
 console.log('%c⚠ Team Omega: BEDROHUNG ERKANNT', 'color: #FF4500; font-weight: bold;');
 console.log(' ');
-console.log('%cPasswort-Hinweise:', 'color: #0054E3;');
-console.log('Versuchen Sie: bastigbg, koffer, omega, totemofdying, fünfhüter, macht, basis, candy, server');
+console.log('%cPasswort-Hinweis:', 'color: #0054E3;');
+console.log('Achte auf das Video.');
 console.log(' ');
 console.log('%cMacht durch Geheimnis.', 'color: #FFD700; font-weight: bold; font-size: 16px;');
+console.log(' ');
+console.log('%c⚠️ ACHTUNG: HACKER-VERSUCH GEFUNDEN!', 'color: #FF0000; font-size: 14px; font-weight: bold; background: #000; padding: 5px;');
+console.log('%cUnbefugter Zugriff auf Console erkannt. Ihr Zugang wird protokolliert.', 'color: #FF4500; font-size: 11px;');
+

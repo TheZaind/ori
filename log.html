@@ -276,6 +276,142 @@
                 font-size: 8px;
             }
         }
+
+        .log-entry {
+            position: relative;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .log-entry.pending {
+            opacity: 0;
+            transform: translateX(-24px);
+            pointer-events: none;
+            animation: none !important;
+        }
+
+        .log-entry.visible {
+            opacity: 1;
+            transform: translateX(0);
+            animation: logFadeIn 0.5s ease-out;
+        }
+
+        .notfall-label {
+            display: block;
+            color: #FF4500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+        }
+
+        .notfall-signal {
+            margin-top: 10px;
+            padding: 12px;
+            border: 2px solid #FF4500;
+            background: rgba(255,69,0,0.1);
+            box-shadow: 0 0 12px rgba(255,69,0,0.25);
+        }
+
+        .notfall-btn {
+            background: linear-gradient(180deg, #550000 0%, #220000 100%);
+            border-color: #FF0000;
+            color: #FF8888;
+        }
+
+        .notfall-btn:hover {
+            background: #FF0000;
+            color: #FFF;
+        }
+
+        .notfall-btn:disabled {
+            opacity: 0.6;
+            cursor: wait;
+        }
+
+        .notfall-status {
+            margin-top: 8px;
+            font-size: 10px;
+            color: #FFD700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        body.alarm-mode {
+            animation: globalFlash 0.6s infinite alternate;
+        }
+
+        body.alarm-mode .log-container {
+            border-color: #FF0000;
+            box-shadow: 0 0 30px rgba(255,0,0,0.7);
+        }
+
+        .alarm-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,0,0,0.1);
+            backdrop-filter: blur(2px);
+            z-index: 1000;
+            animation: overlayPulse 1s infinite;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 12vh;
+        }
+
+        .alarm-overlay-content {
+            background: rgba(0,0,0,0.85);
+            border: 3px solid #FF0000;
+            padding: 20px 24px;
+            width: 320px;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(255,0,0,0.6);
+            text-transform: uppercase;
+        }
+
+        .alarm-overlay-content h2 {
+            margin-bottom: 12px;
+            color: #FF6666;
+            letter-spacing: 3px;
+        }
+
+        .alarm-overlay-content p {
+            font-size: 11px;
+            color: #FFB3B3;
+            margin-bottom: 16px;
+        }
+
+        .alarm-popup {
+            position: fixed;
+            width: 180px;
+            background: rgba(0,0,0,0.9);
+            border: 2px solid #FF0000;
+            color: #FFB3B3;
+            padding: 10px;
+            z-index: 1100;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 1px;
+            box-shadow: 0 0 10px rgba(255,0,0,0.4);
+            animation: popupFlicker 0.6s infinite alternate;
+        }
+
+        @keyframes globalFlash {
+            0% { filter: none; }
+            100% { filter: brightness(1.15) saturate(1.4); }
+        }
+
+        @keyframes overlayPulse {
+            0%, 100% { background: rgba(255,0,0,0.08); }
+            50% { background: rgba(255,0,0,0.2); }
+        }
+
+        @keyframes popupFlicker {
+            0% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0.6; transform: translateY(-3px); }
+        }
     </style>
 </head>
 <body>
@@ -290,94 +426,58 @@
         </div>
 
         <div class="log-content">
-            <div class="log-entry">
-                <div class="log-timestamp">[03.11.20██ - 14:47:23]</div>
-                <span class="log-level success">LOGIN</span>
-                <div class="log-message">Administrator-Zugang bestätigt. Willkommen zurück, Basti.</div>
-            </div>
-
-            <div class="log-entry">
-                <div class="log-timestamp">[03.11.20██ - 14:32:15]</div>
-                <span class="log-level warning">SICHERHEIT</span>
-                <div class="log-message">Team Omega Aktivität erhöht. Eindringversuch protokolliert: IP <span class="classified">███.███.███.███</span></div>
-            </div>
-
-            <div class="log-entry">
-                <div class="log-timestamp">[03.11.20██ - 12:18:44]</div>
-                <span class="log-level info">SYSTEM</span>
-                <div class="log-message">Wächter-Rotation erfolgreich durchgeführt. Alle 5 Hüter online und bereit.</div>
-            </div>
-
-            <div class="log-entry">
-                <div class="log-timestamp">[02.11.20██ - 23:47:09]</div>
-                <span class="log-level error">ALARM</span>
-                <div class="log-message">Nicht autorisierter Zugriffsversuch auf Koffer-Datenbank. Quelle: Team Omega</div>
-            </div>
-
-            <div class="log-entry">
-                <div class="log-timestamp">[02.11.20██ - 18:22:33]</div>
-                <span class="log-level info">WARTUNG</span>
-                <div class="log-message">Redstone-Sicherheitssystem Update v2.3 installiert. Kamera-Netzwerk erweitert.</div>
-            </div>
-
-            <div class="log-entry">
-                <div class="log-timestamp">[01.11.20██ - 09:15:27]</div>
-                <span class="log-level critical">KRITISCH</span>
-                <div class="log-message">Koffer-Integrität-Check: <span style="color: #FFD700;">100% VERSIEGELT</span> | Keine Manipulationen festgestellt</div>
-            </div>
-
-            <div class="log-entry">
-                <div class="log-timestamp">[31.10.20██ - 16:03:12]</div>
-                <span class="log-level warning">ÜBERWACHUNG</span>
-                <div class="log-message">Team Omega Meeting erkannt. Teilnehmer: <span class="classified">█████</span>. Überwachung verstärkt.</div>
-            </div>
-
-            <div class="log-entry">
-                <div class="log-timestamp">[30.10.20██ - 22:44:51]</div>
-                <span class="log-level info">HÜTER</span>
-                <div class="log-message">Wächter nooreax: Patrouillenrunde abgeschlossen. Basis: SICHER</div>
-            </div>
-
-            <div class="log-entry">
-                <div class="log-timestamp">[29.10.20██ - 14:28:03]</div>
-                <span class="log-level info">HÜTER</span>
-                <div class="log-message">Wächter Faister: Perimeter-Check bestanden. Keine Anomalien.</div>
-            </div>
-
-            <div class="log-entry">
+            <div class="log-entry pending">
                 <div class="log-timestamp">[28.10.20██ - 11:55:19]</div>
                 <span class="log-level warning">SICHERHEIT</span>
-                <div class="log-message">Unbekanntes Signal aus Sektor 7 empfangen. Hüter entsandt zur Untersuchung.</div>
+                <div class="log-message">
+                    Unbekanntes Signal aus Sektor 7 empfangen. Hüter entsandt zur Untersuchung.
+                </div>
             </div>
 
-            <div class="log-entry">
+            <div class="log-entry pending">
                 <div class="log-timestamp">[25.10.20██ - 08:12:44]</div>
                 <span class="log-level success">SYSTEM</span>
-                <div class="log-message">Basis-Erweiterung abgeschlossen. Neue geheime Ausgänge installiert.</div>
+                <div class="log-message">
+                    Basis-Erweiterung abgeschlossen. Neue geheime Ausgänge installiert.
+                </div>
             </div>
 
-            <div class="log-entry">
+            <div class="log-entry pending">
                 <div class="log-timestamp">[20.10.20██ - 19:33:07]</div>
                 <span class="log-level info">HÜTER</span>
-                <div class="log-message">Wächter NQRMAN, byStegi, CastCrafter: Gemeinsame Sicherheitsübung erfolgreich.</div>
+                <div class="log-message">
+                    Wächter NQRMAN, byStegi, CastCrafter: Gemeinsame Sicherheitsübung erfolgreich.
+                </div>
             </div>
 
-            <div class="log-entry">
+            <div class="log-entry pending">
                 <div class="log-timestamp">[15.10.20██ - 13:07:22]</div>
                 <span class="log-level critical">GEHEIM</span>
-                <div class="log-message">Koffer-Inhalt Status: <span class="classified">███████████████████</span> | NUR BASTI: <span class="classified">████████</span></div>
+                <div class="log-message">
+                    Koffer-Inhalt Status: <span class="classified">███████████████████</span> | NUR BASTI: <span class="classified">████████</span>
+                </div>
             </div>
 
-            <div class="log-entry">
+            <div class="log-entry pending">
                 <div class="log-timestamp">[10.10.20██ - 10:00:00]</div>
                 <span class="log-level success">INIT</span>
-                <div class="log-message">Ori-Projekt offiziell gestartet. Die 5 Hüter wurden aktiviert. Macht durch Geheimnis.</div>
+                <div class="log-message">
+                    Ori-Projekt offiziell gestartet. Die 5 Hüter wurden aktiviert. Macht durch Geheimnis.
+                </div>
             </div>
 
-            <div class="log-entry">
+            <div class="log-entry pending notfall-entry">
                 <div class="log-timestamp">[05.10.20██ - 00:00:01]</div>
                 <span class="log-level critical">SYSTEM</span>
-                <div class="log-message glitch-text">◈ DAS GRÖSSTE GEHEIMNIS BEGINNT ◈</div>
+                <div class="log-message">
+                    <strong class="notfall-label">Notfall-Signal!</strong>
+                    <p class="glitch-text">◈ DAS GRÖSSTE GEHEIMNIS BEGINNT ◈</p>
+                    <div class="notfall-signal">
+                        <button id="notfallPlayBtn" class="back-btn notfall-btn">▶ Notfall-Signal abspielen</button>
+                        <div class="notfall-status" id="notfallStatus">Bereit zur Übertragung.</div>
+                        <audio id="notfallAudio" src="data/hilfe.mp3"></audio>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -391,9 +491,222 @@
     </div>
 
     <script>
-        // Add auto-scroll to bottom on load
         const logContent = document.querySelector('.log-content');
-        logContent.scrollTop = logContent.scrollHeight;
+        const logEntries = Array.from(logContent.children);
+        const notfallEntry = logEntries[logEntries.length - 1] || null;
+        const notfallAudio = notfallEntry ? notfallEntry.querySelector('#notfallAudio') : null;
+        const notfallPlayBtn = notfallEntry ? notfallEntry.querySelector('#notfallPlayBtn') : null;
+        const notfallStatus = notfallEntry ? notfallEntry.querySelector('#notfallStatus') : null;
+
+        const beepPrototype = new Audio('data/piep_pc.mp3');
+        beepPrototype.preload = 'auto';
+        beepPrototype.load();
+
+        const alarmSound = new Audio('data/arlarm.mp3');
+        alarmSound.preload = 'auto';
+        alarmSound.loop = true;
+        alarmSound.load();
+
+        logEntries.forEach(entry => {
+            entry.classList.remove('visible');
+            entry.classList.add('pending');
+        });
+        logContent.innerHTML = '';
+
+        let alarmTriggered = false;
+        let alarmTimeoutId = null;
+        let alarmPopupInterval = null;
+        let glitchInterval = null;
+
+        function playBeep(volume = 0.7) {
+            try {
+                const beep = beepPrototype.cloneNode();
+                beep.volume = volume;
+                beep.play().catch(() => {});
+            } catch (err) {
+                beepPrototype.currentTime = 0;
+                beepPrototype.volume = volume;
+                beepPrototype.play().catch(() => {});
+            }
+        }
+
+        function revealSequentially(index) {
+            if (index >= logEntries.length) {
+                logContent.scrollTop = logContent.scrollHeight;
+                return;
+            }
+            const delay = 500 + Math.random() * 2500;
+            setTimeout(() => {
+                const entry = logEntries[index];
+                logContent.appendChild(entry);
+                
+                // Play sound EXACTLY when entry becomes visible
+                playBeep();
+                
+                requestAnimationFrame(() => {
+                    entry.classList.remove('pending');
+                    entry.classList.add('visible');
+                    logContent.scrollTop = logContent.scrollHeight;
+                    revealSequentially(index + 1);
+                });
+            }, delay);
+        }
+
+        revealSequentially(0);
+
+        if (notfallAudio) {
+            notfallAudio.preload = 'auto';
+            notfallAudio.load();
+        }
+
+        if (notfallPlayBtn && notfallAudio) {
+            notfallPlayBtn.addEventListener('click', () => {
+                if (!notfallAudio.paused) {
+                    return;
+                }
+                notfallAudio.currentTime = 0;
+                notfallAudio.play().then(() => {
+                    notfallPlayBtn.textContent = '■ Notfall-Signal läuft...';
+                    notfallPlayBtn.disabled = true;
+                    if (notfallStatus) {
+                        notfallStatus.textContent = 'Übertragung aktiv...';
+                    }
+                    if (!alarmTimeoutId) {
+                        alarmTimeoutId = setTimeout(() => {
+                            startAlarm();
+                        }, 8000);
+                    }
+                }).catch(() => {
+                    if (notfallStatus) {
+                        notfallStatus.textContent = 'Audio blockiert. Bitte erneut tippen.';
+                    }
+                });
+            });
+
+            notfallAudio.addEventListener('ended', () => {
+                if (notfallStatus) {
+                    notfallStatus.textContent = 'Übertragung abgeschlossen.';
+                }
+                startAlarm();
+            });
+        }
+
+        function startAlarm() {
+            if (alarmTriggered) {
+                return;
+            }
+            alarmTriggered = true;
+            if (alarmTimeoutId) {
+                clearTimeout(alarmTimeoutId);
+                alarmTimeoutId = null;
+            }
+
+            // Start alarm sound
+            alarmSound.currentTime = 0;
+            alarmSound.play().catch(e => console.log('Alarm sound error:', e));
+
+            const container = document.querySelector('.log-container');
+            if (container) {
+                container.classList.add('alarm-active');
+            }
+            document.body.classList.add('alarm-mode');
+
+            const overlay = document.createElement('div');
+            overlay.className = 'alarm-overlay';
+            overlay.innerHTML = `
+                <div class="alarm-overlay-content">
+                    <h2>!!! ALARM !!!</h2>
+                    <p>Notfall-Signal empfangen. Sicherheitsprotokoll aktiviert.</p>
+                    <button class="back-btn alarm-ack" onclick="showAccessDenied()">Alarm off</button>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+
+            createAlarmPopup();
+            alarmPopupInterval = setInterval(createAlarmPopup, 1400);
+            
+            // Start screen-wide glitch effects
+            startGlitchEffects();
+
+            if (notfallStatus) {
+                notfallStatus.textContent = 'Notfallprotokoll wird aktiviert...';
+            }
+        }
+
+        function showAccessDenied() {
+            alert('⚠️ ZUGRIFF VERWEIGERT!\n\nNur autorisierte Mitglieder können den Alarm deaktivieren.\nSicherheitsprotokoll läuft weiter.');
+        }
+
+        function startGlitchEffects() {
+            glitchInterval = setInterval(() => {
+                applyRandomGlitch();
+            }, 200);
+        }
+
+        function applyRandomGlitch() {
+            const elements = document.querySelectorAll('.log-entry, .log-header, .log-footer, .alarm-overlay-content, .log-container');
+            const randomElement = elements[Math.floor(Math.random() * elements.length)];
+            
+            if (!randomElement) return;
+
+            const glitchEffects = [
+                () => {
+                    const originalColor = randomElement.style.color;
+                    const originalBg = randomElement.style.background;
+                    randomElement.style.color = '#F0F';
+                    randomElement.style.background = '#0F0';
+                    randomElement.style.filter = 'invert(1)';
+                    setTimeout(() => {
+                        randomElement.style.color = originalColor;
+                        randomElement.style.background = originalBg;
+                        randomElement.style.filter = '';
+                    }, 150);
+                },
+                () => {
+                    const originalTransform = randomElement.style.transform;
+                    randomElement.style.transform = 'skew(' + (Math.random() * 10 - 5) + 'deg) scale(' + (0.95 + Math.random() * 0.1) + ')';
+                    setTimeout(() => {
+                        randomElement.style.transform = originalTransform;
+                    }, 100);
+                },
+                () => {
+                    randomElement.style.textShadow = (Math.random() * 4 - 2) + 'px 0 #F00, ' + (Math.random() * 4 - 2) + 'px 0 #0FF';
+                    randomElement.style.filter = 'blur(' + (Math.random() * 2) + 'px)';
+                    setTimeout(() => {
+                        randomElement.style.textShadow = '';
+                        randomElement.style.filter = '';
+                    }, 120);
+                },
+                () => {
+                    let count = 0;
+                    const flicker = setInterval(() => {
+                        randomElement.style.opacity = Math.random() > 0.5 ? '1' : '0.2';
+                        count++;
+                        if (count > 5) {
+                            clearInterval(flicker);
+                            randomElement.style.opacity = '1';
+                        }
+                    }, 30);
+                }
+            ];
+
+            const randomGlitch = glitchEffects[Math.floor(Math.random() * glitchEffects.length)];
+            randomGlitch();
+        }
+
+        function createAlarmPopup() {
+            const popup = document.createElement('div');
+            popup.className = 'alarm-popup';
+            popup.style.top = `${20 + Math.random() * 60}%`;
+            popup.style.left = `${10 + Math.random() * 70}%`;
+            popup.innerHTML = `
+                <strong>ALARM</strong><br>
+                UNBEFUGTER ZUGRIFF<br>
+                ID: ${Math.random().toString(36).slice(2, 6).toUpperCase()}
+            `;
+            document.body.appendChild(popup);
+            setTimeout(() => popup.remove(), 2500);
+        }
 
         // Random screen flicker effect
         setInterval(() => {
