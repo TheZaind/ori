@@ -7,6 +7,24 @@
 const introSound = new Audio('data/intro.mp3');
 const glitchSound = new Audio('data/Glitch.mp3');
 
+introSound.preload = 'auto';
+glitchSound.preload = 'auto';
+
+introSound.load();
+glitchSound.load();
+
+function playGlitchSound() {
+    try {
+        const sound = glitchSound.cloneNode();
+        sound.volume = glitchSound.volume;
+        sound.currentTime = 0;
+        sound.play().catch(err => console.log('Glitch sound error:', err));
+    } catch (err) {
+        glitchSound.currentTime = 0;
+        glitchSound.play().catch(error => console.log('Fallback glitch sound error:', error));
+    }
+}
+
 // === ACCESS DENIED POP-UP ===
 function showAccessDenied(event) {
     event.preventDefault();
@@ -592,16 +610,15 @@ setInterval(() => {
 // === RANDOM OBJECT GLITCHES ===
 function initRandomGlitches() {
     function applyRandomGlitch() {
-        // Play glitch sound FIRST
-        glitchSound.currentTime = 0;
-        glitchSound.play().catch(e => console.log('Glitch sound error:', e));
-        
         // Select random elements that can glitch
         const glitchableElements = document.querySelectorAll(
             '.panel, .widget, .info-box, .guardian-card, .nav-btn, h1, h2, h3, .logo, .status-badge, button, .data-table tr'
         );
         
-        if (glitchableElements.length === 0) return;
+    if (glitchableElements.length === 0) return;
+        
+    // Play glitch sound synced with visual frame
+    requestAnimationFrame(() => playGlitchSound());
         
         // Pick random element
         const randomElement = glitchableElements[Math.floor(Math.random() * glitchableElements.length)];
@@ -707,11 +724,10 @@ function initLoginBlockGlitch() {
 
     const trigger = () => {
         const pieces = 3 + Math.floor(Math.random() * 3); // 3-5 slices
-        widget.classList.add('login-glitching');
+    widget.classList.add('login-glitching');
         
-        // Play glitch sound
-        glitchSound.currentTime = 0;
-        glitchSound.play().catch(e => console.log('Glitch sound error:', e));
+    // Play glitch sound synced with visual frame
+    requestAnimationFrame(() => playGlitchSound());
 
         for (let i = 0; i < pieces; i++) {
             const clone = widget.cloneNode(true);
