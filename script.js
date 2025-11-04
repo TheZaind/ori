@@ -3,6 +3,19 @@
 // Windows 2000s era functionality with ARG elements
 // ================================================
 
+// === AUDIO SETUP ===
+const introSound = new Audio('data/intro.mp3');
+const glitchSound = new Audio('data/Glitch Sound 1.wav');
+
+// Play intro on first load
+let hasPlayedIntro = sessionStorage.getItem('oriIntroPlayed');
+if (!hasPlayedIntro) {
+    window.addEventListener('load', function() {
+        introSound.play().catch(e => console.log('Audio autoplay prevented:', e));
+        sessionStorage.setItem('oriIntroPlayed', 'true');
+    });
+}
+
 // === ACCESS DENIED POP-UP ===
 function showAccessDenied(event) {
     event.preventDefault();
@@ -646,6 +659,10 @@ function initRandomGlitches() {
         // Apply random glitch effect
         const randomGlitch = glitchEffects[Math.floor(Math.random() * glitchEffects.length)];
         randomGlitch();
+        
+        // Play glitch sound
+        glitchSound.currentTime = 0;
+        glitchSound.play().catch(e => console.log('Glitch sound error:', e));
     }
     
     // Random interval between 10-30 seconds
@@ -680,6 +697,10 @@ function initLoginBlockGlitch() {
     const trigger = () => {
         const pieces = 3 + Math.floor(Math.random() * 3); // 3-5 slices
         widget.classList.add('login-glitching');
+        
+        // Play glitch sound
+        glitchSound.currentTime = 0;
+        glitchSound.play().catch(e => console.log('Glitch sound error:', e));
 
         for (let i = 0; i < pieces; i++) {
             const clone = widget.cloneNode(true);
